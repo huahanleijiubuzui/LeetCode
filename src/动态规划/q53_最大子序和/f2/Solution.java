@@ -19,6 +19,6 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().maxSubArray(new int[]{-2}));
+        System.out.println(new Solution().maxSubArray(new int[]{-1, 1,-2, 2, 1}));
     }
 }
