@@ -20,7 +20,7 @@ package 其它题目;
  * 输出：
  * 2
  */
-public class 最强小分队 {
+public class M01_最强小分队 {
 
     public static void main(String[] args) {
         int n = 14;
