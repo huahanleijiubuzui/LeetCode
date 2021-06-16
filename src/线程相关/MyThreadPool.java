@@ -1,8 +1,8 @@
 package 线程相关;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author : huahan
@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 public class MyThreadPool {
     public static void main(String[] args) {
        ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 8, 6, TimeUnit.SECONDS,
-               new ArrayBlockingQueue<>(15));
+               new LinkedBlockingDeque<>());
        // 往线程池中循环添加线程
         for(int i = 1; i<= 20; i++) {
             // 创建线程对象
