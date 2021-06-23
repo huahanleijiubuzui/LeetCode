@@ -1,7 +1,9 @@
 package hash相关.q387_字符串中的第一个唯一字符;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 
 /**
  * Hash o(n)
@@ -26,9 +28,11 @@ public class Solution {
 
 
     public static void main(String[] args) {
-        String s = "hello,world !";
+        String s = "hhello,,weorld !";
         System.out.println(firstUniqChar(s));
         System.out.println(getUniqChar(s));
+        Solution solution = new Solution();
+        System.out.println(solution.getUniqFirstCharWithQueue(s));
     }
 
 
@@ -53,5 +57,46 @@ public class Solution {
             }
         }
         return -1;
+    }
+
+    /**
+     * 借助队列(先进先出)，一次循环找出结果
+     * @param str
+     * @return
+     */
+    public int getUniqFirstCharWithQueue(String str) {
+        if(str == null || str == "") {
+            return -1;
+        }
+        Queue<Pair> queue = new LinkedList();
+        Map<Character, Integer> map = new HashMap();
+        int n = str.length();
+        char[] chars = str.toCharArray();
+
+        for(int i = 0 ; i < n; i++) {
+            if(map.containsKey(chars[i])) {
+                map.put(chars[i],-1);
+                // 判断重复的字符是否位于队列头部，是的话从队列中删除
+                while(!queue.isEmpty() && map.get(queue.peek().ch) == -1) {
+                    queue.poll();
+                }
+            } else {
+                map.put(chars[i],1);
+                queue.offer(new Pair(chars[i],i));
+            }
+        }
+        return queue.isEmpty() ? -1 : queue.peek().index ;
+    }
+
+    class Pair{
+        // 字符
+        char ch;
+        // 字符下标
+        int index;
+
+        Pair(Character ch, Integer index) {
+            this.ch = ch;
+            this.index = index;
+        }
     }
 }
