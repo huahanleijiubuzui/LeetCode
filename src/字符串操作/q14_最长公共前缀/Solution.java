@@ -29,7 +29,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String[] s = new String[]{"c", "c"};
+        String[] s = new String[]{"click", "cyand","ceyab"};
         System.out.println(new Solution().longestCommonPrefix(s));
     }
 }

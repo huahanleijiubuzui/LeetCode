@@ -31,5 +31,6 @@ public class QuickSort {
         QuickSort sort = new QuickSort();
         sort.quick_sort(nums,0,nums.length-1);
         System.out.println(Arrays.toString(nums));
+        System.out.println(5/2);
     }
 }
